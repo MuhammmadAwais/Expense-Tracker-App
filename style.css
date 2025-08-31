@@ -1,0 +1,314 @@
+@import url("https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap"); /* Added Segoe UI weights for better usage */
+
+/* Cosmic Master CSS - Best Overall */
+
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(to bottom, #0d0d1f, #1a1a3d);
+  color: #e0e8ff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  display: flex; /* Added to center .container as per original HTML structure */
+  justify-content: center; /* Added to center .container */
+  align-items: center; /* Added to center .container */
+  padding: 20px; /* Added some padding for better layout */
+}
+
+/* Heading Styles */
+h1,
+h2,
+h3 {
+  text-align: center;
+  margin: 20px 0;
+  text-shadow: 0 0 10px #00f7ff;
+  color: #e0e8ff; /* Ensure headings also use the primary text color */
+}
+
+/* Link & Text */
+a {
+  color: #00eaff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+a:hover {
+  color: #ff00ff;
+}
+
+p {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+/* Buttons */
+button {
+  /* General button styling */
+  background: linear-gradient(45deg, #00eaff, #6f00ff);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #00f7ff;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s;
+  font-weight: 600; /* Added for better readability */
+}
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #ff00ff;
+}
+
+/* Specific button styling for the form */
+#expense-form button[type="submit"] {
+  margin-top: 10px; /* Add some space above the button */
+  width: 100%; /* Make form button full width */
+}
+
+/* Input Fields */
+input[type="text"], /* Target specific input types */
+input[type="number"],
+textarea {
+  background: #121222;
+  border: 1px solid #333;
+  color: #e0e0ff;
+  padding: 12px 15px; /* Adjusted padding */
+  margin: 8px 0; /* Adjusted margin */
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: 0 0 5px #00f7ff33;
+  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for focus */
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+  outline: none; /* Remove default outline */
+  border-color: #00eaff; /* Highlight border on focus */
+  box-shadow: 0 0 10px #00eaff99; /* Glow on focus */
+}
+
+/* Form Label Styling */
+#expense-form label {
+  display: block; /* Make labels block elements */
+  margin-top: 15px; /* Space above labels */
+  margin-bottom: 5px; /* Space between label and input */
+  color: #00eaff; /* Style labels to match theme */
+  font-weight: 600;
+  text-shadow: 0 0 5px rgba(0, 234, 255, 0.5);
+}
+
+/* Card Containers (Applied to .container for the expense tracker) */
+.container {
+  /* Main container for the app */
+  background: #1e1e2e;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.7); /* Adjusted shadow for depth */
+  padding: clamp(20px, 5vw, 40px); /* Responsive padding */
+  margin: 20px;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  width: 100%;
+  max-width: 500px; /* Max width for the tracker */
+  border: 1px solid rgba(0, 234, 255, 0.2); /* Subtle border */
+}
+.container:hover {
+  transform: translateY(-5px) scale(1.01); /* Subtle lift */
+  box-shadow: 0 5px 35px rgba(0, 234, 255, 0.5); /* Enhanced glow on hover */
+}
+
+/* Expense List Styling */
+#expense-list {
+  list-style-type: none; /* Remove default bullets */
+  padding: 0;
+  margin-top: 20px;
+}
+
+#expense-list li {
+  background: rgba(18, 18, 34, 0.7); /* Darker, slightly transparent items */
+  color: #c0c8e0; /* Lighter text for items */
+  padding: 12px 18px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 4px solid #00eaff; /* Accent border */
+  transition: background-color 0.3s, transform 0.2s, border-left-color 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#expense-list li:hover {
+  background-color: rgba(30, 30, 46, 0.9);
+  transform: translateX(5px);
+  border-left-color: #ff00ff; /* Change accent on hover */
+}
+
+/* Style for description and amount within list items */
+#expense-list li .description {
+  /* Assuming you'll wrap description in a span */
+  flex-grow: 1;
+  margin-right: 10px;
+}
+#expense-list li .amount {
+  /* Assuming you'll wrap amount in a span */
+  font-weight: 600;
+  color: #33ffaa; /* A contrasting color for amount */
+}
+
+/* Delete button inside list items */
+#expense-list li button.delete-btn {
+  background: transparent;
+  color: #ff4d4d;
+  padding: 5px 10px;
+  border: 1px solid #ff4d4d;
+  border-radius: 6px;
+  box-shadow: none;
+  font-size: 0.85em;
+  margin-left: 10px;
+}
+#expense-list li button.delete-btn:hover {
+  background: #ff4d4d;
+  color: white;
+  box-shadow: 0 0 10px #ff4d4d;
+  transform: scale(1.05);
+}
+
+/* Total Expense Styling */
+#total-expense {
+  text-align: right;
+  font-size: 1.5em; /* Larger total */
+  font-weight: 700;
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 2px solid rgba(0, 234, 255, 0.3);
+  color: #00eaff; /* Make total prominent */
+  text-shadow: 0 0 8px rgba(0, 234, 255, 0.7);
+}
+#total-expense::before {
+  content: "Total: $"; /* Or your currency symbol */
+  opacity: 0.8;
+  margin-right: 5px;
+}
+
+/* Loader Animation */
+.loader {
+  border: 8px solid #1a1a3d;
+  border-top: 8px solid #00eaff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  margin: 40px auto; /* Center loader if used standalone */
+  position: absolute; /* Example for centering on page if needed */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Ensure it's on top */
+  display: none; /* Initially hidden, show with JS when loading */
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Glow Animation (Can be applied to any element by adding class 'glow') */
+.glow {
+  animation: glowEffect 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowEffect {
+  from {
+    text-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff;
+  }
+  to {
+    text-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+  }
+}
+
+/* Particle Background (Placeholder for JS implementation like particles.js) */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Behind all content */
+  background: transparent; /* Ensure it doesn't obscure body background */
+}
+
+/* Responsive Layout Adjustments */
+/* .container class from inspiration is now the main .container for the app */
+
+@media (max-width: 768px) {
+  body {
+    padding: 10px; /* Less padding on small screens */
+  }
+  .container {
+    margin: 10px;
+    padding: 20px;
+  }
+  h1 {
+    font-size: 1.8rem; /* Adjusted heading size */
+  }
+  #expense-form button[type="submit"] {
+    /* Ensure form button is full width */
+    width: 100%;
+    padding: 12px; /* Adjust padding for smaller screens */
+  }
+  #expense-form label {
+    font-size: 0.9rem;
+  }
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+  #expense-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px; /* Add gap for stacked items */
+  }
+  #expense-list li .amount {
+    align-self: flex-end; /* Push amount to the end */
+  }
+  #expense-list li button.delete-btn {
+    align-self: flex-end; /* Push delete button to the end */
+    margin-left: 0;
+    margin-top: 5px;
+  }
+  #total-expense {
+    font-size: 1.3em;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+  #expense-form label {
+    font-size: 0.85rem;
+  }
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    font-size: 0.9rem;
+  }
+  #expense-list li {
+    padding: 10px 12px;
+  }
+  #total-expense {
+    font-size: 1.2em;
+  }
+}
+
+
